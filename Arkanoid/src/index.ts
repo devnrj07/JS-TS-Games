@@ -37,18 +37,20 @@ const setGameWin = (view: CanvasView) => {
 const gameLoop = (view: CanvasView, bricks: Brick[], paddle: Paddle, ball: Ball, collision: Collision) => {
     view.clear()
     view.drawBricks(bricks)
-    view.buildGame(paddle)
-    view.buildGame(ball)
+    view.buildGameItem(paddle)
+    view.buildGameItem(ball)
 
     //move ball
     ball.moveBall();
 
     //check boundaries of paddle before moving
     if (
-        (paddle.isMovingLeft && paddle.pos.x > 0) || (paddle.isMovingRight && paddle.pos.x < view.canvas.width - paddle.width)
-    ) {
-        paddle.movePaddle()
-    }
+        (paddle.isMovingLeft && paddle.pos.x > 0) ||
+        (paddle.isMovingRight && paddle.pos.x < view.canvas.width - paddle.width)
+      ) {
+          console.log('inside')
+        paddle.movePaddle();
+      }
 
     collision.checkBallCollision(ball, paddle, view);
     const collidingBrick = collision.isCollidingBricks(ball, bricks);
@@ -70,7 +72,6 @@ const gameLoop = (view: CanvasView, bricks: Brick[], paddle: Paddle, ball: Ball,
 
 //reset and create new Bricks, Ball, Paddle and Collison objects
 const startGame = (view: CanvasView) => {
-    console.log({ view })
 
     //reset
     score = 0;

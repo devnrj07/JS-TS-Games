@@ -34,7 +34,7 @@ export class CanvasView {
         if (this.info) this.info.innerHTML = text;
     }
 
-    buildGame(item: Ball | Brick | Paddle): void {
+    buildGameItem(item: Ball | Brick | Paddle): void {
         if (!item) return;
 
         this.context?.drawImage(
@@ -47,6 +47,6 @@ export class CanvasView {
     }
 
     drawBricks(bricks:Brick[]):void{
-        bricks.forEach(brick => this.buildGame(brick))
+        bricks.forEach(brick => this.buildGameItem(brick))
     }
 }

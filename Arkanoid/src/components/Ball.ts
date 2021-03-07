@@ -38,11 +38,11 @@ export class Ball {
     }
 
     changeXDirection(): void {
-        this.speed.x -= this.speed.x;
+        this.speed.x = -this.speed.x;
     }
 
     changeYDirection(): void {
-        this.speed.y -= this.speed.y;
+        this.speed.y = -this.speed.y;
     }
 
     moveBall(): void {
